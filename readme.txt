@@ -5,8 +5,10 @@ Author URI: http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/
 Plugin URI: http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/
 Tags: super, transition, slideshow, wordpress, plugin
 Requires at least: 3.0
-Tested up to: 3.4.1
-Stable tag: 6.0
+Tested up to: 3.4.2
+Stable tag: 6.1
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
 Don't just display images, showcase them in style using this transition slideshow plugin. Randomly chosen Transitional effects in IE browsers.
 
@@ -62,6 +64,11 @@ Q4. How the slide show manages the order?
 
 == Upgrade Notice ==
 
+= 6.1 =
+
+Tested up to 3.4.2
+Slight change in the short code, Please find the new short code for your slideshow.
+
 = 6.0 =
 
 New demo link, www.gopiplus.com
@@ -89,9 +96,14 @@ First version
 
 == Changelog ==
 
+= 6.1 =
+
+Tested up to 3.4.2
+Slight change in the short code, Please find the new short code for your sideshow.
+
 = 6.0 =
 
-New demo link, www.gopiplus.com
+New demo link, http://www.gopiplus.com
 
 = 5.0 =		
 
