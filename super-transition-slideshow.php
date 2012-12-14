@@ -6,9 +6,11 @@ Plugin URI: http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/
 Description: Don't just display images, showcase them in style using this Super transition slideshow plugin. Randomly chosen 
 Transitional effects in IE browsers.  
 Author: Gopi.R
-Version: 6.1
+Version: 6.2
 Author URI: http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/
 Donate link: http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 function sts_show() 
@@ -250,9 +252,9 @@ function sts_admin_option()
 	</form>
     <h2>Plugin configuration option</h2>
 	<ol>
-	<li>Drag and drop the widget</li>
-	<li>Short code for pages and posts</li>
-	<li>Add directly in the theme</li>
+		<li>Drag and drop the widget</li>
+		<li>Short code for pages and posts</li>
+		<li>Add directly in the theme</li>
 	</ol>
 	Note: check official website for live demo and more information <a target="_blank" href='http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/'>click here</a><br> 
 	<h2>Note</h2>
@@ -295,17 +297,14 @@ function sts_widget_init()
 
 function sts_deactivation() 
 {
-//	delete_option('sts_title');
-//	delete_option('sts_dir');
-//	delete_option('sts_title_yes');
-//	delete_option('sts_pause');
-//	delete_option('sts_transduration');
+	// No action required.	
 }
 
 function sts_add_to_menu() 
 {
 	add_options_page('Super transition slideshow', 'Super transition slideshow', 'manage_options', __FILE__, 'sts_admin_option' );
 }
+
 if (is_admin()) 
 {
 	add_action('admin_menu', 'sts_add_to_menu');

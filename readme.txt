@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/
 Plugin URI: http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/
 Tags: super, transition, slideshow, wordpress, plugin
 Requires at least: 3.0
-Tested up to: 3.4.2
-Stable tag: 6.1
+Tested up to: 3.5
+Stable tag: 6.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -64,6 +64,10 @@ Q4. How the slide show manages the order?
 
 == Upgrade Notice ==
 
+= 6.2 =
+
+Tested up to 3.5
+
 = 6.1 =
 
 Tested up to 3.4.2
@@ -95,6 +99,10 @@ Tested upto 3.0
 First version
 
 == Changelog ==
+
+= 6.2 =
+
+Tested up to 3.5
 
 = 6.1 =
 
