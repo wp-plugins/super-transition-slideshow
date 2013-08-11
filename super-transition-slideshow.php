@@ -6,7 +6,7 @@ Plugin URI: http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/
 Description: Don't just display images, showcase them in style using this Super transition slideshow plugin. Randomly chosen 
 Transitional effects in IE browsers.  
 Author: Gopi.R
-Version: 7.0
+Version: 7.1
 Author URI: http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/
 Donate link: http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/
 License: GPLv2 or later
@@ -179,104 +179,114 @@ function sts_widget($args)
 
 function sts_admin_option() 
 {
-	
-	echo "<div class='wrap'>";
-	echo "<h2>Super transition slideshow</h2>"; 
-    
-	$sts_title = get_option('sts_title');
-	$sts_dir = get_option('sts_dir');
-	$sts_title_yes = get_option('sts_title_yes');
-	$sts_pause = get_option('sts_pause');
-	$sts_transduration = get_option('sts_transduration');
-	$sts_dir_1 = get_option('sts_dir_1');
-	$sts_dir_2 = get_option('sts_dir_2');
-	$sts_dir_3 = get_option('sts_dir_3');
-	$sts_dir_4 = get_option('sts_dir_4');
-	
-	if (@$_POST['sts_submit']) 
-	{
-		$sts_title = stripslashes($_POST['sts_title']);
-		$sts_dir = stripslashes($_POST['sts_dir']);
-		$sts_title_yes = stripslashes($_POST['sts_title_yes']);
-		$sts_pause = stripslashes($_POST['sts_pause']);
-		$sts_transduration = stripslashes($_POST['sts_transduration']);
-		$sts_dir_1 = stripslashes($_POST['sts_dir_1']);
-		$sts_dir_2 = stripslashes($_POST['sts_dir_2']);
-		$sts_dir_3 = stripslashes($_POST['sts_dir_3']);
-		$sts_dir_4 = stripslashes($_POST['sts_dir_4']);
-		
-		update_option('sts_title', $sts_title );
-		update_option('sts_dir', $sts_dir );
-		update_option('sts_title_yes', $sts_title_yes );
-		update_option('sts_pause', $sts_pause );
-		update_option('sts_transduration', $sts_transduration );
-		update_option('sts_dir_1', $sts_dir_1 );
-		update_option('sts_dir_2', $sts_dir_2 );
-		update_option('sts_dir_3', $sts_dir_3 );
-		update_option('sts_dir_4', $sts_dir_4 );
-		
-	}
+	global $wpdb;
 	?>
-	<form name="form_sts" method="post" action="">
-	<table width="100%" border="0" cellspacing="0" cellpadding="3"><tr><td align="left">
+	<div class="wrap">
+	  <div class="form-wrap">
+		<div id="icon-edit" class="icon32"></div>
+		<h2>Super transition slideshow</h2>
+		<?php
+		$sts_title = get_option('sts_title');
+		$sts_dir = get_option('sts_dir');
+		$sts_title_yes = get_option('sts_title_yes');
+		$sts_pause = get_option('sts_pause');
+		$sts_transduration = get_option('sts_transduration');
+		$sts_dir_1 = get_option('sts_dir_1');
+		$sts_dir_2 = get_option('sts_dir_2');
+		$sts_dir_3 = get_option('sts_dir_3');
+		$sts_dir_4 = get_option('sts_dir_4');
+		if (isset($_POST['sts_form_submit']) && $_POST['sts_form_submit'] == 'yes')
+		{
+			check_admin_referer('sts_form_setting');
+			$sts_title = stripslashes($_POST['sts_title']);
+			$sts_dir = stripslashes($_POST['sts_dir']);
+			$sts_title_yes = stripslashes($_POST['sts_title_yes']);
+			$sts_pause = stripslashes($_POST['sts_pause']);
+			$sts_transduration = stripslashes($_POST['sts_transduration']);
+			$sts_dir_1 = stripslashes($_POST['sts_dir_1']);
+			$sts_dir_2 = stripslashes($_POST['sts_dir_2']);
+			$sts_dir_3 = stripslashes($_POST['sts_dir_3']);
+			$sts_dir_4 = stripslashes($_POST['sts_dir_4']);
+			update_option('sts_title', $sts_title );
+			update_option('sts_dir', $sts_dir );
+			update_option('sts_title_yes', $sts_title_yes );
+			update_option('sts_pause', $sts_pause );
+			update_option('sts_transduration', $sts_transduration );
+			update_option('sts_dir_1', $sts_dir_1 );
+			update_option('sts_dir_2', $sts_dir_2 );
+			update_option('sts_dir_3', $sts_dir_3 );
+			update_option('sts_dir_4', $sts_dir_4 );
+			?>
+			<div class="updated fade">
+				<p><strong>Details successfully updated.</strong></p>
+			</div>
+			<?php
+		}
+		?>
+		<form name="sts_form" method="post" action="">
+		    <h3>Widget setting</h3>
+			
+			<label for="tag-width">Widget title</label>
+			<input name="sts_title" type="text" value="<?php echo $sts_title; ?>"  id="sts_title" size="50" maxlength="150">
+			<p>Please enter your widget title.</p>
+			
+			<label for="tag-width">Pause</label>
+			<input name="sts_pause" type="text" value="<?php echo $sts_pause; ?>"  id="sts_pause" maxlength="4">
+			<p>Pause between slideshow in millisec. (Example: 1000)</p>
+			
+			<label for="tag-width">Transduration</label>
+			<input name="sts_transduration" type="text" value="<?php echo $sts_transduration; ?>"  id="sts_transduration" maxlength="4">
+			<p>Please enter duration of transition. (Example: 2000)</p>
+			
+			<label for="tag-width">Display sidebar title</label>
+			<select name="sts_title_yes" id="sts_title_yes">
+				<option value='YES' <?php if($sts_title_yes == 'YES') { echo "selected='selected'" ; } ?>>YES</option>
+				<option value='NO' <?php if($sts_title_yes == 'NO') { echo "selected='selected'" ; } ?>>NO</option>
+			</select>
+			<p>Please select YES to display title on sidebar.</p>
+			
+			<label for="tag-width">Image directory (Default for widget)</label>
+			<input name="sts_dir" type="text" value="<?php echo $sts_dir; ?>"  id="sts_dir" size="100" maxlength="500">
+			<p>Short code for thos directory: [super-slideshow dir="dir0"]</p>
+			
+			<label for="tag-width">Image directory 1</label>
+			<input name="sts_dir_1" type="text" value="<?php echo $sts_dir_1; ?>"  id="sts_dir_1" size="100" maxlength="500">
+			<p>Short code for thos directory: [super-slideshow dir="dir1"]</p>
+			
+			<label for="tag-width">Image directory 2</label>
+			<input name="sts_dir_2" type="text" value="<?php echo $sts_dir_2; ?>"  id="sts_dir_2" size="100" maxlength="500">
+			<p>Short code for thos directory: [super-slideshow dir="dir2"]</p>
+			
+			<label for="tag-width">Image directory 3</label>
+			<input name="sts_dir_3" type="text" value="<?php echo $sts_dir_3; ?>"  id="sts_dir_3" size="100" maxlength="500">
+			<p>Short code for thos directory: [super-slideshow dir="dir3"]</p>
+			
+			<label for="tag-width">Image directory 4</label>
+			<input name="sts_dir_4" type="text" value="<?php echo $sts_dir_4; ?>"  id="sts_dir_4" size="100" maxlength="500">
+			<p>Short code for thos directory: [super-slideshow dir="dir3"]</p>
+			
+			<div style="height:10px;"></div>
+			<input name="sts_submit" id="sts_submit" class="button" value="Submit" type="submit" />&nbsp;
+			<a class="button" target="_blank" href="http://www.gopiplus.com/work/2010/07/18/vertical-scroll-recent-post/">Help</a>
+			<input type="hidden" name="sts_form_submit" value="yes"/>
+			<?php wp_nonce_field('sts_form_setting'); ?>
+		</form>
+		</div>
+		<h3>Plugin configuration option</h3>
+		<ol>
+			<li>Add directly in to the theme using PHP code.</li>
+			<li>Drag and drop the widget to your sidebar.</li>
+			<li>Add into specific post or page using short code.</li>
+		</ol>
+	  <p class="description">Check official website for more information <a target="_blank" href="http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/">click here</a></p>
+	</div>
 	<?php
-	echo '<p>Title:<br><input  style="width: 450px;" maxlength="200" type="text" value="';
-	echo $sts_title . '" name="sts_title" id="sts_title" /></p>';
-	echo '<p>Pause:<br><input  style="width: 100px;" maxlength="4" type="text" value="';
-	echo $sts_pause . '" name="sts_pause" id="sts_pause" /> Only Number / Pause between content change (millisec)</p>';
-	echo '<p>Transduration:<br><input  style="width: 100px;" maxlength="4" type="text" value="';
-	echo $sts_transduration . '" name="sts_transduration" id="sts_transduration" /> Only Number / Duration of transition (affects only IE users)</p>';
-	echo '<p>Display Sidebar Title:<br><input maxlength="3" style="width: 100px;" type="text" value="';
-	echo $sts_title_yes . '" name="sts_title_yes" id="sts_title_yes" /> (YES/NO)</p>';
-	echo '<p>Image directory:<br><input  style="width: 550px;" type="text" value="';
-	echo $sts_dir . '" name="sts_dir" id="sts_dir" /> [super-slideshow dir="dir0"]</p>';
-	
-	echo '<p>Image directory 1:<br><input  style="width: 550px;" type="text" value="';
-	echo $sts_dir_1 . '" name="sts_dir_1" id="sts_dir_1" /> [super-slideshow dir="dir1"]</p>';
-	
-	echo '<p>Image directory 2:<br><input  style="width: 550px;" type="text" value="';
-	echo $sts_dir_2 . '" name="sts_dir_2" id="sts_dir_2" /> [super-slideshow dir="dir2"]</p>';
-	
-	echo '<p>Image directory 3:<br><input  style="width: 550px;" type="text" value="';
-	echo $sts_dir_3 . '" name="sts_dir_3" id="sts_dir_3" /> [super-slideshow dir="dir3"]</p>';
-	
-	echo '<p>Image directory 4:<br><input  style="width: 550px;" type="text" value="';
-	echo $sts_dir_4 . '" name="sts_dir_4" id="sts_dir_4" /> [super-slideshow dir="dir4"]</p>';
-	
-	echo '<p>Default Image directory:<br>wp-content/plugins/super-transition-slideshow/images/ <br>';
-	echo 'Dont upload your original images into this defult folder, instead you change this default path to original path from the above text box.</p>';
-	
-	echo '<input name="sts_submit" id="sts_submit" class="button-primary" value="Submit" type="submit" />';
-	?>
-	</td><td align="center" valign="middle"> </td></tr></table>
-	</form>
-    <h2>Plugin configuration option</h2>
-	<ol>
-		<li>Drag and drop the widget</li>
-		<li>Short code for pages and posts</li>
-		<li>Add directly in the theme</li>
-	</ol>
-	Note: check official website for live demo and more information <a target="_blank" href='http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/'>click here</a><br> 
-	<h2>Note</h2>
-	<p style="color:#990000;">
-	1. This plug-in will not create any thumbnail of the image.<br>
-	2. To change or use the fixed width take "super-transition-slideshow.js" file from plug-in directory and go to line 63 and fix the width, see below.<br>
-	<code>
-	slideHTML+='&lt;img src=&quot;'+this.imagearray[index][0]+'&quot; /&gt;'<br>
-	to<br>
-	slideHTML+='&lt;img width=&quot;200&quot; HEIGHT=&quot;150&quot; src=&quot;'+this.imagearray[index][0]+'&quot; /&gt;'</code><br>
-	3. And take the "super-transition-slideshow.css" css file from same directory and set the width to "sts_class" class.<br>
-	4. in default am using 200 X 150 size images.<br>
-    <br></p>
-	<?php
-	echo "</div>";
 }
 
 function sts_control()
 {
-	echo '<p>Super transition slideshow.<br> To change the setting goto Super transition slideshow link on Setting menu.';
-	echo ' <a href="options-general.php?page=super-transition-slideshow/super-transition-slideshow.php">';
-	echo 'click here</a></p>';
+	echo '<p>Super transition slideshow.<br> To change the setting goto <b>Super transition slideshow</b> link on <b>Settings</b> menu.';
+	echo ' <a href="options-general.php?page=super-transition-slideshow">click here</a></p>';
 	?>
 	check official website for live demo and more information  <a target="_blank" href='http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/'>click here</a><br> 
 	<?php
@@ -302,7 +312,7 @@ function sts_deactivation()
 
 function sts_add_to_menu() 
 {
-	add_options_page('Super transition slideshow', 'Super transition slideshow', 'manage_options', __FILE__, 'sts_admin_option' );
+	add_options_page('Super transition slideshow', 'Super transition slideshow', 'manage_options', 'super-transition-slideshow', 'sts_admin_option' );
 }
 
 if (is_admin()) 
