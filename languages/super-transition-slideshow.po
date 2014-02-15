@@ -1,0 +1,122 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Super transition slideshow\n"
+"POT-Creation-Date: 2014-02-14 22:58+0800\n"
+"PO-Revision-Date: 2014-02-14 22:58+0800\n"
+"Last-Translator: \n"
+"Language-Team: www.gopiplus.com <www.gopiplus.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../super-transition-slideshow.php:53
+msgid "Image folder not found."
+msgstr ""
+
+#: ../super-transition-slideshow.php:192 ../super-transition-slideshow.php:295
+#: ../super-transition-slideshow.php:306 ../super-transition-slideshow.php:312
+#: ../super-transition-slideshow.php:323 ../super-transition-slideshow.php:324
+msgid "Super transition slideshow"
+msgstr ""
+
+#: ../super-transition-slideshow.php:226
+msgid "Details successfully updated."
+msgstr ""
+
+#: ../super-transition-slideshow.php:232
+msgid "Widget setting"
+msgstr ""
+
+#: ../super-transition-slideshow.php:234
+msgid "Widget title"
+msgstr ""
+
+#: ../super-transition-slideshow.php:236
+msgid "Please enter your widget title."
+msgstr ""
+
+#: ../super-transition-slideshow.php:238
+msgid "Pause"
+msgstr ""
+
+#: ../super-transition-slideshow.php:240
+msgid "Pause between slideshow in millisec."
+msgstr ""
+
+#: ../super-transition-slideshow.php:242
+msgid "Transduration"
+msgstr ""
+
+#: ../super-transition-slideshow.php:244
+msgid "Please enter duration of transition."
+msgstr ""
+
+#: ../super-transition-slideshow.php:246
+msgid "Display sidebar title"
+msgstr ""
+
+#: ../super-transition-slideshow.php:251
+msgid "Please select YES to display title on sidebar."
+msgstr ""
+
+#: ../super-transition-slideshow.php:253
+msgid "Image directory (Default for widget)"
+msgstr ""
+
+#: ../super-transition-slideshow.php:255 ../super-transition-slideshow.php:259
+#: ../super-transition-slideshow.php:263 ../super-transition-slideshow.php:267
+#: ../super-transition-slideshow.php:271
+msgid "Short code for thos directory:"
+msgstr ""
+
+#: ../super-transition-slideshow.php:257
+msgid "Image directory 1"
+msgstr ""
+
+#: ../super-transition-slideshow.php:261
+msgid "Image directory 2"
+msgstr ""
+
+#: ../super-transition-slideshow.php:265
+msgid "Image directory 3"
+msgstr ""
+
+#: ../super-transition-slideshow.php:269
+msgid "Image directory 4"
+msgstr ""
+
+#: ../super-transition-slideshow.php:274
+msgid "Submit"
+msgstr ""
+
+#: ../super-transition-slideshow.php:275
+msgid "Help"
+msgstr ""
+
+#: ../super-transition-slideshow.php:280
+msgid "Plugin configuration option"
+msgstr ""
+
+#: ../super-transition-slideshow.php:282
+msgid "Add directly in to the theme using PHP code."
+msgstr ""
+
+#: ../super-transition-slideshow.php:283
+msgid "Drag and drop the widget to your sidebar."
+msgstr ""
+
+#: ../super-transition-slideshow.php:284
+msgid "Add into specific post or page using short code."
+msgstr ""
+
+#: ../super-transition-slideshow.php:286 ../super-transition-slideshow.php:297
+msgid "Check official website for more information"
+msgstr ""
+
+#: ../super-transition-slideshow.php:287 ../super-transition-slideshow.php:298
+msgid "click here"
+msgstr ""

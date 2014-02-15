@@ -1,12 +1,11 @@
 <?php
-
 /*
 Plugin Name: Super transition slideshow
 Plugin URI: http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/
 Description: Don't just display images, showcase them in style using this Super transition slideshow plugin. Randomly chosen 
 Transitional effects in IE browsers.  
 Author: Gopi.R
-Version: 7.1
+Version: 7.2
 Author URI: http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/
 Donate link: http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/
 License: GPLv2 or later
@@ -21,32 +20,38 @@ function sts_show()
 	$sts_pluginurl = $sts_siteurl . "/wp-content/plugins/super-transition-slideshow/";
 	$sts_dirurl = $sts_siteurl . "/" . $sts_dir ;
 	
-	$sts_dirhandle = opendir($sts_dir);
-	while ($sts_file = readdir($sts_dirhandle)) 
+	if(is_dir($sts_dir))
 	{
-	  if(!is_dir($sts_file) && (strpos($sts_file, '.jpg')>0 or strpos($sts_file, '.gif')>0 or strpos($sts_file, '.JPG')>0 or strpos($sts_file, '.GIF')>0))
-	  {
-		$sts = $sts . '["'.$sts_dirurl . $sts_file.'", "", "", ""],';
-	  }
-	}
-	closedir($sts_dirhandle);
-	$sts = substr($sts,0,(strlen($sts)-1));
-	?>
-	<link rel='stylesheet' href='<?php echo $sts_pluginurl; ?>super-transition-slideshow.css' type='text/css' />
-    <script type="text/javascript">
-
-	var flashyshow=new super_transition_slideshow({ 
-		wrapperid: "sts_slideshow", 
-		wrapperclass: "sts_class", 
-		imagearray: [
-			<?php echo $sts; ?>
-		],
-		pause: <?php echo get_option('sts_pause'); ?>, 
-		transduration: <?php echo get_option('sts_transduration'); ?> 
-	})
+		$sts_dirhandle = opendir($sts_dir);
+		while ($sts_file = readdir($sts_dirhandle)) 
+		{
+		  if(!is_dir($sts_file) && (strpos($sts_file, '.jpg')>0 or strpos($sts_file, '.gif')>0 or strpos($sts_file, '.JPG')>0 or strpos($sts_file, '.GIF')>0))
+		  {
+			$sts = $sts . '["'.$sts_dirurl . $sts_file.'", "", "", ""],';
+		  }
+		}
+		closedir($sts_dirhandle);
+		$sts = substr($sts,0,(strlen($sts)-1));
+		?>
+		<link rel='stylesheet' href='<?php echo $sts_pluginurl; ?>super-transition-slideshow.css' type='text/css' />
+		<script type="text/javascript">
 	
-	</script>
-    <?php
+		var flashyshow=new super_transition_slideshow({ 
+			wrapperid: "sts_slideshow", 
+			wrapperclass: "sts_class", 
+			imagearray: [
+				<?php echo $sts; ?>
+			],
+			pause: <?php echo get_option('sts_pause'); ?>, 
+			transduration: <?php echo get_option('sts_transduration'); ?> 
+		})
+		</script>
+		<?php
+	}
+	else
+	{
+		_e('Image folder not exists.', 'super-transition-slideshow');
+	}
 }
 
 add_shortcode( 'super-slideshow', 'sts_shortcode' );
@@ -184,7 +189,7 @@ function sts_admin_option()
 	<div class="wrap">
 	  <div class="form-wrap">
 		<div id="icon-edit" class="icon32"></div>
-		<h2>Super transition slideshow</h2>
+		<h2><?php _e('Super transition slideshow', 'super-transition-slideshow'); ?></h2>
 		<?php
 		$sts_title = get_option('sts_title');
 		$sts_dir = get_option('sts_dir');
@@ -218,90 +223,93 @@ function sts_admin_option()
 			update_option('sts_dir_4', $sts_dir_4 );
 			?>
 			<div class="updated fade">
-				<p><strong>Details successfully updated.</strong></p>
+				<p><strong><?php _e('Details successfully updated.', 'super-transition-slideshow'); ?></strong></p>
 			</div>
 			<?php
 		}
 		?>
 		<form name="sts_form" method="post" action="">
-		    <h3>Widget setting</h3>
+		    <h3><?php _e('Widget setting', 'super-transition-slideshow'); ?></h3>
 			
-			<label for="tag-width">Widget title</label>
+			<label for="tag-width"><?php _e('Widget title', 'super-transition-slideshow'); ?></label>
 			<input name="sts_title" type="text" value="<?php echo $sts_title; ?>"  id="sts_title" size="50" maxlength="150">
-			<p>Please enter your widget title.</p>
+			<p><?php _e('Please enter your widget title.', 'super-transition-slideshow'); ?></p>
 			
-			<label for="tag-width">Pause</label>
+			<label for="tag-width"><?php _e('Pause', 'super-transition-slideshow'); ?></label>
 			<input name="sts_pause" type="text" value="<?php echo $sts_pause; ?>"  id="sts_pause" maxlength="4">
-			<p>Pause between slideshow in millisec. (Example: 1000)</p>
+			<p><?php _e('Pause between slideshow in millisec.', 'super-transition-slideshow'); ?> (Example: 1000)</p>
 			
-			<label for="tag-width">Transduration</label>
+			<label for="tag-width"><?php _e('Transduration', 'super-transition-slideshow'); ?></label>
 			<input name="sts_transduration" type="text" value="<?php echo $sts_transduration; ?>"  id="sts_transduration" maxlength="4">
-			<p>Please enter duration of transition. (Example: 2000)</p>
+			<p><?php _e('Please enter duration of transition.', 'super-transition-slideshow'); ?> (Example: 2000)</p>
 			
-			<label for="tag-width">Display sidebar title</label>
+			<label for="tag-width"><?php _e('Display sidebar title', 'super-transition-slideshow'); ?></label>
 			<select name="sts_title_yes" id="sts_title_yes">
 				<option value='YES' <?php if($sts_title_yes == 'YES') { echo "selected='selected'" ; } ?>>YES</option>
 				<option value='NO' <?php if($sts_title_yes == 'NO') { echo "selected='selected'" ; } ?>>NO</option>
 			</select>
-			<p>Please select YES to display title on sidebar.</p>
+			<p><?php _e('Please select YES to display title on sidebar.', 'super-transition-slideshow'); ?></p>
 			
-			<label for="tag-width">Image directory (Default for widget)</label>
+			<label for="tag-width"><?php _e('Image directory (Default for widget)', 'super-transition-slideshow'); ?></label>
 			<input name="sts_dir" type="text" value="<?php echo $sts_dir; ?>"  id="sts_dir" size="100" maxlength="500">
-			<p>Short code for thos directory: [super-slideshow dir="dir0"]</p>
+			<p><?php _e('Short code for thos directory:', 'super-transition-slideshow'); ?> [super-slideshow dir="dir0"]</p>
 			
-			<label for="tag-width">Image directory 1</label>
+			<label for="tag-width"><?php _e('Image directory 1', 'super-transition-slideshow'); ?></label>
 			<input name="sts_dir_1" type="text" value="<?php echo $sts_dir_1; ?>"  id="sts_dir_1" size="100" maxlength="500">
-			<p>Short code for thos directory: [super-slideshow dir="dir1"]</p>
+			<p><?php _e('Short code for thos directory:', 'super-transition-slideshow'); ?> [super-slideshow dir="dir1"]</p>
 			
-			<label for="tag-width">Image directory 2</label>
+			<label for="tag-width"><?php _e('Image directory 2', 'super-transition-slideshow'); ?></label>
 			<input name="sts_dir_2" type="text" value="<?php echo $sts_dir_2; ?>"  id="sts_dir_2" size="100" maxlength="500">
-			<p>Short code for thos directory: [super-slideshow dir="dir2"]</p>
+			<p><?php _e('Short code for thos directory:', 'super-transition-slideshow'); ?> [super-slideshow dir="dir2"]</p>
 			
-			<label for="tag-width">Image directory 3</label>
+			<label for="tag-width"><?php _e('Image directory 3', 'super-transition-slideshow'); ?></label>
 			<input name="sts_dir_3" type="text" value="<?php echo $sts_dir_3; ?>"  id="sts_dir_3" size="100" maxlength="500">
-			<p>Short code for thos directory: [super-slideshow dir="dir3"]</p>
+			<p><?php _e('Short code for thos directory:', 'super-transition-slideshow'); ?> [super-slideshow dir="dir3"]</p>
 			
-			<label for="tag-width">Image directory 4</label>
+			<label for="tag-width"><?php _e('Image directory 4', 'super-transition-slideshow'); ?></label>
 			<input name="sts_dir_4" type="text" value="<?php echo $sts_dir_4; ?>"  id="sts_dir_4" size="100" maxlength="500">
-			<p>Short code for thos directory: [super-slideshow dir="dir3"]</p>
+			<p><?php _e('Short code for thos directory:', 'super-transition-slideshow'); ?> [super-slideshow dir="dir3"]</p>
 			
 			<div style="height:10px;"></div>
-			<input name="sts_submit" id="sts_submit" class="button" value="Submit" type="submit" />&nbsp;
-			<a class="button" target="_blank" href="http://www.gopiplus.com/work/2010/07/18/vertical-scroll-recent-post/">Help</a>
+			<input name="sts_submit" id="sts_submit" class="button" value="<?php _e('Submit', 'super-transition-slideshow'); ?>" type="submit" />&nbsp;
+			<a class="button" target="_blank" href="http://www.gopiplus.com/work/2010/07/18/vertical-scroll-recent-post/"><?php _e('Help', 'super-transition-slideshow'); ?></a>
 			<input type="hidden" name="sts_form_submit" value="yes"/>
 			<?php wp_nonce_field('sts_form_setting'); ?>
 		</form>
 		</div>
-		<h3>Plugin configuration option</h3>
+		<h3><?php _e('Plugin configuration option', 'super-transition-slideshow'); ?></h3>
 		<ol>
-			<li>Add directly in to the theme using PHP code.</li>
-			<li>Drag and drop the widget to your sidebar.</li>
-			<li>Add into specific post or page using short code.</li>
+			<li><?php _e('Add directly in to the theme using PHP code.', 'super-transition-slideshow'); ?></li>
+			<li><?php _e('Drag and drop the widget to your sidebar.', 'super-transition-slideshow'); ?></li>
+			<li><?php _e('Add into specific post or page using short code.', 'super-transition-slideshow'); ?></li>
 		</ol>
-	  <p class="description">Check official website for more information <a target="_blank" href="http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/">click here</a></p>
+	  <p class="description"><?php _e('Check official website for more information', 'super-transition-slideshow'); ?> 
+	  <a target="_blank" href="http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/"><?php _e('click here', 'super-transition-slideshow'); ?></a></p>
 	</div>
 	<?php
 }
 
 function sts_control()
 {
-	echo '<p>Super transition slideshow.<br> To change the setting goto <b>Super transition slideshow</b> link on <b>Settings</b> menu.';
-	echo ' <a href="options-general.php?page=super-transition-slideshow">click here</a></p>';
-	?>
-	check official website for live demo and more information  <a target="_blank" href='http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/'>click here</a><br> 
-	<?php
+	echo '<p><b>';
+	_e('Super transition slideshow', 'super-transition-slideshow');
+	echo '.</b> ';
+	_e('Check official website for more information', 'super-transition-slideshow');
+	?> <a target="_blank" href="http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/"><?php _e('click here', 'super-transition-slideshow'); ?></a></p><?php
 }
 
 function sts_widget_init() 
 {
 	if(function_exists('wp_register_sidebar_widget')) 	
 	{
-		wp_register_sidebar_widget('Super-transition-slideshow', 'Super transition slideshow', 'sts_widget');
+		wp_register_sidebar_widget('Super-transition-slideshow', 
+				__('Super transition slideshow', 'super-transition-slideshow'), 'sts_widget');
 	}
 	
 	if(function_exists('wp_register_widget_control')) 	
 	{
-		wp_register_widget_control('Super-transition-slideshow', array('Super transition slideshow', 'widgets'), 'sts_control');
+		wp_register_widget_control('Super-transition-slideshow', 
+				array( __('Super transition slideshow', 'super-transition-slideshow'), 'widgets'), 'sts_control');
 	} 
 }
 
@@ -312,7 +320,8 @@ function sts_deactivation()
 
 function sts_add_to_menu() 
 {
-	add_options_page('Super transition slideshow', 'Super transition slideshow', 'manage_options', 'super-transition-slideshow', 'sts_admin_option' );
+	add_options_page( __('Super transition slideshow', 'super-transition-slideshow'), 
+			__('Super transition slideshow', 'super-transition-slideshow'), 'manage_options', 'super-transition-slideshow', 'sts_admin_option' );
 }
 
 if (is_admin()) 
@@ -325,9 +334,15 @@ function sts_add_javascript_files()
 	if (!is_admin())
 	{
 		wp_enqueue_script( 'super-transition-slideshow', get_option('siteurl').'/wp-content/plugins/super-transition-slideshow/super-transition-slideshow.js');
-	}	
+	}
 }
 
+function sts_textdomain() 
+{
+	  load_plugin_textdomain( 'super-transition-slideshow', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+}
+
+add_action('plugins_loaded', 'sts_textdomain');
 add_action('init', 'sts_add_javascript_files');
 add_action("plugins_loaded", "sts_widget_init");
 register_activation_hook(__FILE__, 'sts_install');
