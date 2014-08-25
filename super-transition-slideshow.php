@@ -4,7 +4,7 @@ Plugin Name: Super transition slideshow
 Plugin URI: http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/
 Description: Don't just display images, showcase them in style using this Super transition slideshow plugin. Randomly chosen Transitional effects in IE browsers.  
 Author: Gopi Ramasamy
-Version: 7.3
+Version: 7.4
 Author URI: http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/
 Donate link: http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/
 License: GPLv2 or later
@@ -250,23 +250,23 @@ function sts_admin_option()
 			<p><?php _e('Please select YES to display title on sidebar.', 'super-transition-slideshow'); ?></p>
 			
 			<label for="tag-width"><?php _e('Image directory (Default for widget)', 'super-transition-slideshow'); ?></label>
-			<input name="sts_dir" type="text" value="<?php echo $sts_dir; ?>"  id="sts_dir" size="100" maxlength="500">
+			<input name="sts_dir" type="text" value="<?php echo $sts_dir; ?>"  id="sts_dir" size="80" maxlength="500">
 			<p><?php _e('Short code for thos directory:', 'super-transition-slideshow'); ?> [super-slideshow dir="dir0"]</p>
 			
 			<label for="tag-width"><?php _e('Image directory 1', 'super-transition-slideshow'); ?></label>
-			<input name="sts_dir_1" type="text" value="<?php echo $sts_dir_1; ?>"  id="sts_dir_1" size="100" maxlength="500">
+			<input name="sts_dir_1" type="text" value="<?php echo $sts_dir_1; ?>"  id="sts_dir_1" size="80" maxlength="500">
 			<p><?php _e('Short code for thos directory:', 'super-transition-slideshow'); ?> [super-slideshow dir="dir1"]</p>
 			
 			<label for="tag-width"><?php _e('Image directory 2', 'super-transition-slideshow'); ?></label>
-			<input name="sts_dir_2" type="text" value="<?php echo $sts_dir_2; ?>"  id="sts_dir_2" size="100" maxlength="500">
+			<input name="sts_dir_2" type="text" value="<?php echo $sts_dir_2; ?>"  id="sts_dir_2" size="80" maxlength="500">
 			<p><?php _e('Short code for thos directory:', 'super-transition-slideshow'); ?> [super-slideshow dir="dir2"]</p>
 			
 			<label for="tag-width"><?php _e('Image directory 3', 'super-transition-slideshow'); ?></label>
-			<input name="sts_dir_3" type="text" value="<?php echo $sts_dir_3; ?>"  id="sts_dir_3" size="100" maxlength="500">
+			<input name="sts_dir_3" type="text" value="<?php echo $sts_dir_3; ?>"  id="sts_dir_3" size="80" maxlength="500">
 			<p><?php _e('Short code for thos directory:', 'super-transition-slideshow'); ?> [super-slideshow dir="dir3"]</p>
 			
 			<label for="tag-width"><?php _e('Image directory 4', 'super-transition-slideshow'); ?></label>
-			<input name="sts_dir_4" type="text" value="<?php echo $sts_dir_4; ?>"  id="sts_dir_4" size="100" maxlength="500">
+			<input name="sts_dir_4" type="text" value="<?php echo $sts_dir_4; ?>"  id="sts_dir_4" size="80" maxlength="500">
 			<p><?php _e('Short code for thos directory:', 'super-transition-slideshow'); ?> [super-slideshow dir="dir3"]</p>
 			
 			<div style="height:10px;"></div>
