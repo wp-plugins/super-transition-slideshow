@@ -4,7 +4,7 @@ Plugin Name: Super transition slideshow
 Plugin URI: http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/
 Description: Don't just display images, showcase them in style using this Super transition slideshow plugin. Randomly chosen Transitional effects in IE browsers.  
 Author: Gopi Ramasamy
-Version: 7.4
+Version: 7.5
 Author URI: http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/
 Donate link: http://www.gopiplus.com/work/2010/07/18/super-transition-slideshow/
 License: GPLv2 or later
